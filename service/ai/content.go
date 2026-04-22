@@ -18,4 +18,7 @@ type ContentService interface {
 
 	// SummarizeStream streams the generated summary chunk by chunk.
 	SummarizeStream(ctx context.Context, content string) (<-chan StreamChunk, error)
+
+	// SuggestTagsStream streams tag suggestions chunk by chunk.
+	SuggestTagsStream(ctx context.Context, title, content string) (<-chan StreamChunk, error)
 }

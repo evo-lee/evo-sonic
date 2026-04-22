@@ -10,6 +10,12 @@ import (
 	aiservice "github.com/go-sonic/sonic/service/ai"
 )
 
+const (
+	defaultOllamaBaseURL = "http://localhost:11434/v1"
+	defaultOllamaModel   = "llama3"
+	defaultOpenAIModel   = "gpt-4o-mini"
+)
+
 type openAIProvider struct {
 	client       openai.Client
 	model        string
@@ -21,13 +27,13 @@ func newOpenAIProvider(apiKey, model, baseURL, providerName string) aiservice.Pr
 	if baseURL != "" {
 		opts = append(opts, option.WithBaseURL(baseURL))
 	} else if providerName == "ollama" {
-		opts = append(opts, option.WithBaseURL("http://localhost:11434/v1"))
+		opts = append(opts, option.WithBaseURL(defaultOllamaBaseURL))
 	}
 	if model == "" {
 		if providerName == "ollama" {
-			model = "llama3"
+			model = defaultOllamaModel
 		} else {
-			model = "gpt-4o-mini"
+			model = defaultOpenAIModel
 		}
 	}
 	client := openai.NewClient(opts...)

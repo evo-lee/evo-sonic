@@ -309,6 +309,7 @@ func (s *Server) RegisterRouters() {
 				}
 				{
 					aiRouter := authRouter.Group("/ai")
+					aiRouter.Use(s.AIRateLimitMiddleware.Handler(nil))
 					aiRouter.GET("/config", s.wrapHandler(s.AIHandler.GetConfig))
 					aiRouter.POST("/config", s.wrapHandler(s.AIHandler.SaveConfig))
 					aiRouter.POST("/summarize", s.wrapHandler(s.AIHandler.Summarize))
@@ -316,6 +317,7 @@ func (s *Server) RegisterRouters() {
 					aiRouter.POST("/polish", s.wrapHandler(s.AIHandler.Polish))
 					aiRouter.POST("/stream/summarize", s.AIHandler.SummarizeStream)
 					aiRouter.POST("/stream/polish", s.AIHandler.PolishStream)
+					aiRouter.POST("/stream/suggest-tags", s.AIHandler.SuggestTagsStream)
 				}
 			}
 		}

@@ -35,6 +35,7 @@ type Server struct {
 	AuthMiddleware            *middleware.AuthMiddleware
 	CSRFMiddleware            *middleware.CSRFMiddleware
 	LoginRateLimitMiddleware  *middleware.RateLimitMiddleware
+	AIRateLimitMiddleware     *middleware.RateLimitMiddleware
 	TimeoutMiddleware         *middleware.TimeoutMiddleware
 	LocaleMiddleware          *middleware.LocaleMiddleware
 	RequestIDMiddleware       *middleware.RequestIDMiddleware
@@ -96,7 +97,8 @@ type ServerParams struct {
 	Template                  *template.Template
 	AuthMiddleware            *middleware.AuthMiddleware
 	CSRFMiddleware            *middleware.CSRFMiddleware
-	LoginRateLimitMiddleware  *middleware.RateLimitMiddleware
+	LoginRateLimitMiddleware  *middleware.RateLimitMiddleware `name:"login"`
+	AIRateLimitMiddleware     *middleware.RateLimitMiddleware `name:"ai"`
 	TimeoutMiddleware         *middleware.TimeoutMiddleware
 	LocaleMiddleware          *middleware.LocaleMiddleware
 	RequestIDMiddleware       *middleware.RequestIDMiddleware
@@ -167,6 +169,7 @@ func NewServer(param ServerParams, lifecycle fx.Lifecycle) *Server {
 		AuthMiddleware:            param.AuthMiddleware,
 		CSRFMiddleware:            param.CSRFMiddleware,
 		LoginRateLimitMiddleware:  param.LoginRateLimitMiddleware,
+		AIRateLimitMiddleware:     param.AIRateLimitMiddleware,
 		TimeoutMiddleware:         param.TimeoutMiddleware,
 		LocaleMiddleware:          param.LocaleMiddleware,
 		RequestIDMiddleware:       param.RequestIDMiddleware,

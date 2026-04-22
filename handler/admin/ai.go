@@ -151,12 +151,12 @@ func maskAPIKey(key string) string {
 func (h *AIHandler) SummarizeStream(ctx web.Context) {
 	var req summarizeRequest
 	if err := ctx.BindJSON(&req); err != nil || req.Content == "" {
-		ctx.JSON(400, map[string]string{"error": "content is required"})
+		writeSSEInputError(ctx, "content is required")
 		return
 	}
 	ch, err := h.contentService.SummarizeStream(ctx.RequestContext(), req.Content)
 	if err != nil {
-		ctx.JSON(500, map[string]string{"error": err.Error()})
+		writeSSEInputError(ctx, err.Error())
 		return
 	}
 	writeSSE(ctx, ch)
@@ -166,15 +166,41 @@ func (h *AIHandler) SummarizeStream(ctx web.Context) {
 func (h *AIHandler) PolishStream(ctx web.Context) {
 	var req polishRequest
 	if err := ctx.BindJSON(&req); err != nil || req.Content == "" {
-		ctx.JSON(400, map[string]string{"error": "content is required"})
+		writeSSEInputError(ctx, "content is required")
 		return
 	}
 	ch, err := h.contentService.PolishStream(ctx.RequestContext(), req.Content)
 	if err != nil {
-		ctx.JSON(500, map[string]string{"error": err.Error()})
+		writeSSEInputError(ctx, err.Error())
 		return
 	}
 	writeSSE(ctx, ch)
+}
+
+// SuggestTagsStream streams tag suggestions as Server-Sent Events.
+// Each chunk contains a fragment of the comma-separated tag list.
+func (h *AIHandler) SuggestTagsStream(ctx web.Context) {
+	var req suggestTagsRequest
+	if err := ctx.BindJSON(&req); err != nil || req.Content == "" {
+		writeSSEInputError(ctx, "content is required")
+		return
+	}
+	ch, err := h.contentService.SuggestTagsStream(ctx.RequestContext(), req.Title, req.Content)
+	if err != nil {
+		writeSSEInputError(ctx, err.Error())
+		return
+	}
+	writeSSE(ctx, ch)
+}
+
+// writeSSEInputError sends a single SSE error event and closes the stream.
+// Used for pre-stream validation failures so clients handle errors uniformly.
+func writeSSEInputError(ctx web.Context, msg string) {
+	ctx.SetHeader("Content-Type", "text/event-stream")
+	ctx.SetHeader("Cache-Control", "no-cache")
+	ctx.SetHeader("X-Accel-Buffering", "no")
+	data, _ := json.Marshal(map[string]string{"error": msg})
+	fmt.Fprintf(ctx.Writer(), "event: error\ndata: %s\n\n", data)
 }
 
 // writeSSE writes StreamChunk events to the response as SSE.
@@ -188,6 +214,7 @@ func writeSSE(ctx web.Context, ch <-chan ai.StreamChunk) {
 	native := ctx.Native()
 	hertzCtx, ok := native.(*hertzapp.RequestContext)
 	if !ok {
+		go func() { for range ch {} }() // drain so the provider goroutine can exit
 		ctx.JSON(500, map[string]string{"error": "streaming not supported"})
 		return
 	}
