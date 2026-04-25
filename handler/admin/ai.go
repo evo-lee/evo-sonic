@@ -7,7 +7,10 @@ import (
 	"strings"
 
 	hertzapp "github.com/cloudwego/hertz/pkg/app"
+	"gorm.io/gorm"
 
+	"github.com/go-sonic/sonic/dal"
+	"github.com/go-sonic/sonic/dal/vector"
 	"github.com/go-sonic/sonic/handler/web"
 	"github.com/go-sonic/sonic/model/property"
 	"github.com/go-sonic/sonic/service"
@@ -16,12 +19,30 @@ import (
 )
 
 type AIHandler struct {
-	contentService ai.ContentService
-	optionService  service.OptionService
+	contentService    ai.ContentService
+	optionService     service.OptionService
+	embeddingProvider ai.EmbeddingProvider
+	vectorStore       ai.VectorStore
+	postService       service.PostService
+	workflowService   ai.WorkflowService
 }
 
-func NewAIHandler(contentService ai.ContentService, optionService service.OptionService) *AIHandler {
-	return &AIHandler{contentService: contentService, optionService: optionService}
+func NewAIHandler(
+	db *gorm.DB,
+	contentService ai.ContentService,
+	optionService service.OptionService,
+	embeddingProvider ai.EmbeddingProvider,
+	postService service.PostService,
+	workflowService ai.WorkflowService,
+) *AIHandler {
+	return &AIHandler{
+		contentService:    contentService,
+		optionService:     optionService,
+		embeddingProvider: embeddingProvider,
+		vectorStore:       vector.NewDBStore(db),
+		postService:       postService,
+		workflowService:   workflowService,
+	}
 }
 
 // ── Non-streaming endpoints ────────────────────────────────────────────────
@@ -235,4 +256,122 @@ func writeSSE(ctx web.Context, ch <-chan ai.StreamChunk) {
 		}
 		fmt.Fprintf(pw, "data: [DONE]\n\n")
 	}()
+}
+
+// RelatedPosts returns the topK posts most similar to the given post, based on embeddings.
+// GET /api/admin/ai/related-posts?postId=<id>&limit=5
+func (h *AIHandler) RelatedPosts(ctx web.Context) (interface{}, error) {
+	rawID, _ := ctx.Query("postId")
+	if rawID == "" {
+		return nil, xerr.BadParam.New("postId is required")
+	}
+	rawIDParsed, err := parseIntParam(rawID)
+	if err != nil || rawIDParsed == 0 {
+		return nil, xerr.BadParam.New("postId must be a positive integer")
+	}
+	postID := int32(rawIDParsed)
+	limit := 5
+	if l, ok := ctx.Query("limit"); ok && l != "" {
+		if n, err := parseIntParam(l); err == nil && n > 0 && n <= 20 {
+			limit = n
+		}
+	}
+
+	reqCtx := ctx.RequestContext()
+	post, err := h.postService.GetByPostID(reqCtx, postID)
+	if err != nil {
+		return nil, err
+	}
+	text := post.Title + "\n\n" + post.OriginalContent
+	vec, err := h.embeddingProvider.Embed(reqCtx, text)
+	if err != nil {
+		return nil, xerr.WithStatus(err, xerr.StatusInternalServerError).WithMsg("embedding failed")
+	}
+
+	// +1 so we can drop the post itself from results
+	results, err := h.vectorStore.Search(reqCtx, vec, limit+1)
+	if err != nil {
+		return nil, err
+	}
+
+	postIDs := make([]int32, 0, len(results))
+	for _, r := range results {
+		if r.PostID != postID {
+			postIDs = append(postIDs, r.PostID)
+		}
+	}
+	if len(postIDs) > limit {
+		postIDs = postIDs[:limit]
+	}
+
+	posts, err := h.postService.GetByPostIDs(reqCtx, postIDs)
+	if err != nil {
+		return nil, err
+	}
+
+	type item struct {
+		PostID int32   `json:"post_id"`
+		Title  string  `json:"title"`
+		Slug   string  `json:"slug"`
+		Score  float64 `json:"score"`
+	}
+	scoreMap := make(map[int32]float64, len(results))
+	for _, r := range results {
+		scoreMap[r.PostID] = r.Score
+	}
+	items := make([]item, 0, len(postIDs))
+	for _, id := range postIDs {
+		if p, ok := posts[id]; ok {
+			items = append(items, item{PostID: id, Title: p.Title, Slug: p.Slug, Score: scoreMap[id]})
+		}
+	}
+	return map[string]interface{}{"posts": items}, nil
+}
+
+func parseIntParam(s string) (int, error) {
+	n := 0
+	for _, c := range s {
+		if c < '0' || c > '9' {
+			return 0, xerr.BadParam.New("not a number")
+		}
+		n = n*10 + int(c-'0')
+	}
+	return n, nil
+}
+
+// SEOCheck validates a post and returns actionable SEO suggestions.
+// POST /api/admin/ai/seo-check
+func (h *AIHandler) SEOCheck(ctx web.Context) (interface{}, error) {
+	var req struct {
+		PostID int32 `json:"postId"`
+	}
+	if err := ctx.BindJSON(&req); err != nil {
+		return nil, xerr.WithStatus(err, xerr.StatusBadRequest).WithMsg("parameter error")
+	}
+	if req.PostID == 0 {
+		return nil, xerr.BadParam.New("postId is required")
+	}
+
+	reqCtx := ctx.RequestContext()
+	post, err := h.postService.GetByPostID(reqCtx, req.PostID)
+	if err != nil {
+		return nil, err
+	}
+
+	// Count tags via DAL
+	q := dal.GetQueryByCtx(reqCtx)
+	tagCount, _ := q.PostTag.WithContext(reqCtx).Where(q.PostTag.PostID.Eq(req.PostID)).Count()
+
+	report, err := h.workflowService.CheckSEO(reqCtx, ai.SEOCheckRequest{
+		PostID:          post.ID,
+		Title:           post.Title,
+		Summary:         post.Summary,
+		OriginalContent: post.OriginalContent,
+		MetaDescription: post.MetaDescription,
+		TagCount:        int(tagCount),
+	})
+	if err != nil {
+		return nil, err
+	}
+	return report, nil
 }

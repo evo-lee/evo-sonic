@@ -152,10 +152,19 @@ func (c *mockWebCtx) Abort()                                          {}
 func (c *mockWebCtx) Next()                                           {}
 func (c *mockWebCtx) Native() any                                     { return nil }
 
+// ── mock EmbeddingProvider ────────────────────────────────────────────────────
+
+type mockEmbeddingProvider struct{}
+
+func (mockEmbeddingProvider) Embed(_ context.Context, _ string) ([]float32, error) {
+	return []float32{0.1, 0.2, 0.3}, nil
+}
+
 // ── helpers ───────────────────────────────────────────────────────────────────
 
 func newHandler(cs *mockContentService, opts *mockOptionService) *AIHandler {
-	return NewAIHandler(cs, opts)
+	// Pass nil db/workflowService — tests don't call RelatedPosts or SEOCheck.
+	return NewAIHandler(nil, cs, opts, mockEmbeddingProvider{}, nil, nil)
 }
 
 // ── Summarize handler ─────────────────────────────────────────────────────────

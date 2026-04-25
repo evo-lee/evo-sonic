@@ -8,5 +8,6 @@ func init() {
 	injection.Provide(
 		NewConfigurableProvider,
 		NewContentService,
+		NewConfigurableEmbeddingProvider,
 	)
 }

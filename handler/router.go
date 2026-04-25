@@ -318,6 +318,8 @@ func (s *Server) RegisterRouters() {
 					aiRouter.POST("/stream/summarize", s.AIHandler.SummarizeStream)
 					aiRouter.POST("/stream/polish", s.AIHandler.PolishStream)
 					aiRouter.POST("/stream/suggest-tags", s.AIHandler.SuggestTagsStream)
+					aiRouter.GET("/related-posts", s.wrapHandler(s.AIHandler.RelatedPosts))
+					aiRouter.POST("/seo-check", s.wrapHandler(s.AIHandler.SEOCheck))
 				}
 			}
 		}
@@ -393,6 +395,15 @@ func (s *Server) RegisterRouters() {
 			contentAPIRouter.GET("/options/comment", s.wrapHandler(s.ContentAPIOptionHandler.Comment))
 
 			contentAPIRouter.POST("/comments/:commentID/likes", s.wrapHandler(s.ContentAPICommentHandler.Like))
+
+			contentAPIRouter.GET("/search/semantic", s.wrapHandler(s.ContentAPISemanticSearchHandler.Search))
+		}
+		{
+			// MCP server — JSON-RPC 2.0 over HTTP
+			// Auth: Admin-Authorization header (same token as admin API)
+			mcpRouter := router.Group("/mcp/v1")
+			mcpRouter.Use(s.LogMiddleware.HandlerWithConfig(middleware.LoggerConfig{}), s.RecoveryMiddleware.Handler())
+			mcpRouter.POST("", s.MCPHandler.Handle)
 		}
 	}
 }

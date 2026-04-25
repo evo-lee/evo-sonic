@@ -18,6 +18,7 @@ import (
 	"github.com/go-sonic/sonic/template"
 	"github.com/go-sonic/sonic/template/extension"
 
+	_ "github.com/go-sonic/sonic/handler/mcp"     // register MCP handler
 	_ "github.com/go-sonic/sonic/service/ai/impl" // register AI services
 )
 
@@ -88,6 +89,8 @@ func InitApp() *fx.App {
 			listener.NewPostUpdateListener,
 			listener.NewCommentListener,
 			listener.NewAISummaryListener,
+			listener.NewEmbeddingListener,
+			listener.NewSentimentListener,
 			extension.RegisterCategoryFunc,
 			extension.RegisterCommentFunc,
 			extension.RegisterTagFunc,

@@ -1,0 +1,55 @@
+version: "3.9"
+
+# Full AI stack: sonic-evo + Ollama (local inference) + PostgreSQL + pgvector
+# Usage: docker-compose -f docker-compose.ai.yml up -d
+
+services:
+  sonic:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - AI_PROVIDER=${AI_PROVIDER:-ollama}
+      - AI_API_KEY=${AI_API_KEY:-ollama}
+      - AI_MODEL=${AI_MODEL:-llama3}
+      - AI_BASE_URL=${AI_BASE_URL:-http://ollama:11434/v1}
+      - AI_EMBEDDING_MODEL=${AI_EMBEDDING_MODEL:-nomic-embed-text}
+    volumes:
+      - sonic_data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+    restart: unless-stopped
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: sonicdb
+      POSTGRES_USER: sonic
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sonic}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sonic -d sonicdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    restart: unless-stopped
+    # Pull default models on first start:
+    # docker exec sonic_ollama_1 ollama pull llama3
+    # docker exec sonic_ollama_1 ollama pull nomic-embed-text
+
+volumes:
+  sonic_data:
+  pg_data:
+  ollama_models:

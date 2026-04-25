@@ -17,6 +17,7 @@ import (
 	"github.com/go-sonic/sonic/handler/admin"
 	"github.com/go-sonic/sonic/handler/content"
 	"github.com/go-sonic/sonic/handler/content/api"
+	"github.com/go-sonic/sonic/handler/mcp"
 	"github.com/go-sonic/sonic/handler/middleware"
 	"github.com/go-sonic/sonic/handler/web"
 	"github.com/go-sonic/sonic/handler/web/hertzadapter"
@@ -85,8 +86,10 @@ type Server struct {
 	ContentAPIPostHandler     *api.PostHandler
 	ContentAPISheetHandler    *api.SheetHandler
 	ContentAPIOptionHandler   *api.OptionHandler
-	ContentAPIPhotoHandler    *api.PhotoHandler
-	ContentAPICommentHandler  *api.CommentHandler
+	ContentAPIPhotoHandler          *api.PhotoHandler
+	ContentAPICommentHandler        *api.CommentHandler
+	ContentAPISemanticSearchHandler *api.SemanticSearchHandler
+	MCPHandler                      *mcp.Handler
 }
 
 type ServerParams struct {
@@ -145,11 +148,13 @@ type ServerParams struct {
 	ContentAPICategoryHandler *api.CategoryHandler
 	ContentAPIJournalHandler  *api.JournalHandler
 	ContentAPILinkHandler     *api.LinkHandler
-	ContentAPIPostHandler     *api.PostHandler
-	ContentAPISheetHandler    *api.SheetHandler
-	ContentAPIOptionHandler   *api.OptionHandler
-	ContentAPIPhotoHandler    *api.PhotoHandler
-	ContentAPICommentHandler  *api.CommentHandler
+	ContentAPIPostHandler            *api.PostHandler
+	ContentAPISheetHandler           *api.SheetHandler
+	ContentAPIOptionHandler          *api.OptionHandler
+	ContentAPIPhotoHandler           *api.PhotoHandler
+	ContentAPICommentHandler         *api.CommentHandler
+	ContentAPISemanticSearchHandler  *api.SemanticSearchHandler
+	MCPHandler                       *mcp.Handler
 }
 
 func NewServer(param ServerParams, lifecycle fx.Lifecycle) *Server {
@@ -218,9 +223,11 @@ func NewServer(param ServerParams, lifecycle fx.Lifecycle) *Server {
 		ContentAPIPostHandler:     param.ContentAPIPostHandler,
 		ContentAPISheetHandler:    param.ContentAPISheetHandler,
 		ContentAPIOptionHandler:   param.ContentAPIOptionHandler,
-		ContentSearchHandler:      param.ContentSearchHandler,
-		ContentAPIPhotoHandler:    param.ContentAPIPhotoHandler,
-		ContentAPICommentHandler:  param.ContentAPICommentHandler,
+		ContentSearchHandler:            param.ContentSearchHandler,
+		ContentAPIPhotoHandler:          param.ContentAPIPhotoHandler,
+		ContentAPICommentHandler:        param.ContentAPICommentHandler,
+		ContentAPISemanticSearchHandler: param.ContentAPISemanticSearchHandler,
+		MCPHandler:                      param.MCPHandler,
 	}
 	lifecycle.Append(fx.Hook{OnStart: s.Run, OnStop: s.Stop})
 	return s
