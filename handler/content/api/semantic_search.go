@@ -32,7 +32,7 @@ func NewSemanticSearchHandler(
 func (h *SemanticSearchHandler) Search(ctx web.Context) (interface{}, error) {
 	query, _ := ctx.Query("q")
 	if query == "" {
-		return nil, xerr.BadParam.New("q is required")
+		return nil, xerr.BadParam.New("q is required").WithStatus(xerr.StatusBadRequest).WithMsg("q is required")
 	}
 	limit := 10
 	if l, ok := ctx.Query("limit"); ok && l != "" {
