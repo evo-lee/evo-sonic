@@ -13,5 +13,6 @@ func init() {
 		NewOptionHandler,
 		NewPhotoHandler,
 		NewCommentHandler,
+		NewSemanticSearchHandler,
 	)
 }

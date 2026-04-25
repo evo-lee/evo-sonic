@@ -9,6 +9,14 @@ type Config struct {
 	MySQL      *MySQL      `mapstructure:"mysql"`
 	SQLite3    *SQLite3    `mapstructure:"sqlite3"`
 	Sonic      Sonic       `mapstructure:"sonic"`
+	AI         AI          `mapstructure:"ai"`
+}
+
+type AI struct {
+	// APIKey is the Anthropic API key. Required to enable AI features.
+	APIKey string `mapstructure:"api_key"`
+	// Model is the Claude model ID. Defaults to claude-haiku-4-5 if empty.
+	Model string `mapstructure:"model"`
 }
 
 type Database struct {

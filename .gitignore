@@ -11,3 +11,4 @@ __debug_bin
 !/resources/template/theme/default-theme-anatole/**
 /.gocache/
 /.gomodcache/
+.gstack/

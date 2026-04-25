@@ -17,14 +17,26 @@ import (
 	"github.com/go-sonic/sonic/log"
 	"github.com/go-sonic/sonic/template"
 	"github.com/go-sonic/sonic/template/extension"
+
+	_ "github.com/go-sonic/sonic/handler/mcp"     // register MCP handler
+	_ "github.com/go-sonic/sonic/service/ai/impl" // register AI services
 )
 
-// NewLoginRateLimitMiddleware creates a rate limiter for login endpoints
+// NewLoginRateLimitMiddleware creates a rate limiter for login endpoints (5 req/min).
 func NewLoginRateLimitMiddleware() *middleware.RateLimitMiddleware {
 	return middleware.NewRateLimitMiddleware(middleware.RateLimitConfig{
-		RequestsPerWindow: 5,              // 5 requests
-		Window:            time.Minute,     // per minute
-		MaxBurst:          5,               // allow burst of 5
+		RequestsPerWindow: 5,
+		Window:            time.Minute,
+		MaxBurst:          5,
+	})
+}
+
+// NewAIRateLimitMiddleware creates a rate limiter for AI endpoints (30 req/min per IP).
+func NewAIRateLimitMiddleware() *middleware.RateLimitMiddleware {
+	return middleware.NewRateLimitMiddleware(middleware.RateLimitConfig{
+		RequestsPerWindow: 30,
+		Window:            time.Minute,
+		MaxBurst:          10,
 	})
 }
 
@@ -60,7 +72,8 @@ func InitApp() *fx.App {
 			template.NewTemplate,
 			middleware.NewAuthMiddleware,
 			middleware.NewCSRFMiddleware,
-			NewLoginRateLimitMiddleware,
+			fx.Annotate(NewLoginRateLimitMiddleware, fx.ResultTags(`name:"login"`)),
+			fx.Annotate(NewAIRateLimitMiddleware, fx.ResultTags(`name:"ai"`)),
 			NewTimeoutMiddleware,
 			middleware.NewLocaleMiddleware,
 			middleware.NewRequestIDMiddleware,
@@ -75,6 +88,9 @@ func InitApp() *fx.App {
 			listener.NewLogEventListener,
 			listener.NewPostUpdateListener,
 			listener.NewCommentListener,
+			listener.NewAISummaryListener,
+			listener.NewEmbeddingListener,
+			listener.NewSentimentListener,
 			extension.RegisterCategoryFunc,
 			extension.RegisterCommentFunc,
 			extension.RegisterTagFunc,
