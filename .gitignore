@@ -12,3 +12,6 @@ __debug_bin
 /.gocache/
 /.gomodcache/
 .gstack/
+
+# docs-guardian generated artifacts
+.claude/docs-guardian/audit-report.md

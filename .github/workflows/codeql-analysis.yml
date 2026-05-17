@@ -1,5 +1,7 @@
 name: CodeQL
 
+# Trigger re-run to test security-events upload permissions.
+
 on:
   push:
     branches: [master]
@@ -9,6 +11,11 @@ on:
     paths-ignore:
       - '**/*.md'
       - '**/*.txt'
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
 
 jobs:
   analyze:
