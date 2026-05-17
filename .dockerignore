@@ -1,0 +1,45 @@
+# VCS
+.git
+.gitignore
+.gitattributes
+
+# CI / IDE
+.github
+.idea
+.vscode
+.claude
+
+# Logs and runtime artifacts
+log/
+*.log
+cache/
+coverage.out
+*.out
+*.test
+*.prof
+
+# Local dev / DB / uploads
+sonic
+*.db
+*.sqlite
+*.sqlite3
+upload/
+work/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Node / docs
+node_modules/
+dist/
+build/
+
+# Misc
+.env
+.env.*
+docker-compose*.yml
+Makefile.local
+*.md
+!README.md
