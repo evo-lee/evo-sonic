@@ -4,7 +4,7 @@ FROM golang:1.25-alpine AS builder
 
 RUN apk --no-cache add git ca-certificates gcc g++ musl-dev
 
-WORKDIR /go/src/github.com/go-sonic/sonic
+WORKDIR /go/src/github.com/evo-lee/evo-sonic
 
 COPY go.mod go.sum ./
 RUN --mount=type=cache,target=/go/pkg/mod \
@@ -23,16 +23,16 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     CGO_ENABLED=1 GOOS=${TARGETOS:-linux} GOARCH=${TARGETARCH:-amd64} \
     go build -o sonic \
         -ldflags="-s -w \
-            -X github.com/go-sonic/sonic/consts.SonicVersion=${SONIC_VERSION} \
-            -X github.com/go-sonic/sonic/consts.BuildCommit=${BUILD_COMMIT} \
-            -X github.com/go-sonic/sonic/consts.BuildTime=${BUILD_TIME}" \
+            -X github.com/evo-lee/evo-sonic/consts.SonicVersion=${SONIC_VERSION} \
+            -X github.com/evo-lee/evo-sonic/consts.BuildCommit=${BUILD_COMMIT} \
+            -X github.com/evo-lee/evo-sonic/consts.BuildTime=${BUILD_TIME}" \
         -trimpath .
 
 RUN mkdir -p /app/conf /app/resources && \
-    cp /go/src/github.com/go-sonic/sonic/sonic /app/ && \
-    cp -r /go/src/github.com/go-sonic/sonic/conf/. /app/conf/ && \
-    cp -r /go/src/github.com/go-sonic/sonic/resources/. /app/resources/ && \
-    cp /go/src/github.com/go-sonic/sonic/scripts/docker_init.sh /app/ && \
+    cp /go/src/github.com/evo-lee/evo-sonic/sonic /app/ && \
+    cp -r /go/src/github.com/evo-lee/evo-sonic/conf/. /app/conf/ && \
+    cp -r /go/src/github.com/evo-lee/evo-sonic/resources/. /app/resources/ && \
+    cp /go/src/github.com/evo-lee/evo-sonic/scripts/docker_init.sh /app/ && \
     chmod +x /app/docker_init.sh
 
 

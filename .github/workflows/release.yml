@@ -67,7 +67,7 @@ jobs:
           v: true
           x: false
           race: false
-          ldflags: -s -w -X 'github.com/go-sonic/sonic/consts.SonicVersion=${{github.ref_name}}' -X 'github.com/go-sonic/sonic/consts.BuildCommit=${{github.sha}}' -X 'github.com/go-sonic/sonic/consts.BuildTime=${{env.BUILD_TIME}}'
+          ldflags: -s -w -X 'github.com/evo-lee/evo-sonic/consts.SonicVersion=${{github.ref_name}}' -X 'github.com/evo-lee/evo-sonic/consts.BuildCommit=${{github.sha}}' -X 'github.com/evo-lee/evo-sonic/consts.BuildTime=${{env.BUILD_TIME}}'
           buildmode: default
           trimpath: true
 

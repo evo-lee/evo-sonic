@@ -4,10 +4,10 @@ import (
 	"context"
 	"mime/multipart"
 
-	"github.com/go-sonic/sonic/consts"
-	"github.com/go-sonic/sonic/model/dto"
-	"github.com/go-sonic/sonic/model/entity"
-	"github.com/go-sonic/sonic/model/param"
+	"github.com/evo-lee/evo-sonic/consts"
+	"github.com/evo-lee/evo-sonic/model/dto"
+	"github.com/evo-lee/evo-sonic/model/entity"
+	"github.com/evo-lee/evo-sonic/model/param"
 )
 
 type AttachmentService interface {

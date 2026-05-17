@@ -1,10 +1,10 @@
 package api
 
 import (
-	"github.com/go-sonic/sonic/consts"
-	"github.com/go-sonic/sonic/handler/web"
-	"github.com/go-sonic/sonic/service"
-	"github.com/go-sonic/sonic/service/assembler"
+	"github.com/evo-lee/evo-sonic/consts"
+	"github.com/evo-lee/evo-sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/service"
+	"github.com/evo-lee/evo-sonic/service/assembler"
 )
 
 type ArchiveHandler struct {

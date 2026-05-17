@@ -7,11 +7,11 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/go-sonic/sonic/config"
-	"github.com/go-sonic/sonic/consts"
-	"github.com/go-sonic/sonic/dal"
-	"github.com/go-sonic/sonic/handler/middleware"
-	"github.com/go-sonic/sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/config"
+	"github.com/evo-lee/evo-sonic/consts"
+	"github.com/evo-lee/evo-sonic/dal"
+	"github.com/evo-lee/evo-sonic/handler/middleware"
+	"github.com/evo-lee/evo-sonic/handler/web"
 )
 
 func (s *Server) RegisterRouters() {

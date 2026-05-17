@@ -13,11 +13,11 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 
-	"github.com/go-sonic/sonic/config"
-	"github.com/go-sonic/sonic/consts"
-	sonicLog "github.com/go-sonic/sonic/log"
-	"github.com/go-sonic/sonic/model/entity"
-	"github.com/go-sonic/sonic/util/xerr"
+	"github.com/evo-lee/evo-sonic/config"
+	"github.com/evo-lee/evo-sonic/consts"
+	sonicLog "github.com/evo-lee/evo-sonic/log"
+	"github.com/evo-lee/evo-sonic/model/entity"
+	"github.com/evo-lee/evo-sonic/util/xerr"
 )
 
 var (

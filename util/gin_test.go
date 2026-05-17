@@ -6,7 +6,7 @@ import (
 
 	hertzapp "github.com/cloudwego/hertz/pkg/app"
 
-	"github.com/go-sonic/sonic/handler/web/hertzadapter"
+	"github.com/evo-lee/evo-sonic/handler/web/hertzadapter"
 )
 
 func TestRequestMetadataFromContext(t *testing.T) {

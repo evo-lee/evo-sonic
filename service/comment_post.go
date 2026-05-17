@@ -3,9 +3,9 @@ package service
 import (
 	"context"
 
-	"github.com/go-sonic/sonic/consts"
-	"github.com/go-sonic/sonic/model/entity"
-	"github.com/go-sonic/sonic/model/param"
+	"github.com/evo-lee/evo-sonic/consts"
+	"github.com/evo-lee/evo-sonic/model/entity"
+	"github.com/evo-lee/evo-sonic/model/param"
 )
 
 type PostCommentService interface {

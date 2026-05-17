@@ -9,10 +9,10 @@ import (
 
 	"gopkg.in/yaml.v2"
 
-	"github.com/go-sonic/sonic/config"
-	"github.com/go-sonic/sonic/consts"
-	"github.com/go-sonic/sonic/model/dto"
-	"github.com/go-sonic/sonic/util/xerr"
+	"github.com/evo-lee/evo-sonic/config"
+	"github.com/evo-lee/evo-sonic/consts"
+	"github.com/evo-lee/evo-sonic/model/dto"
+	"github.com/evo-lee/evo-sonic/util/xerr"
 )
 
 type PropertyScanner interface {

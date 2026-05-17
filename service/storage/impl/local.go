@@ -16,13 +16,13 @@ import (
 	"go.uber.org/zap"
 	_ "golang.org/x/image/webp"
 
-	"github.com/go-sonic/sonic/config"
-	"github.com/go-sonic/sonic/consts"
-	"github.com/go-sonic/sonic/log"
-	"github.com/go-sonic/sonic/model/dto"
-	"github.com/go-sonic/sonic/service"
-	"github.com/go-sonic/sonic/util"
-	"github.com/go-sonic/sonic/util/xerr"
+	"github.com/evo-lee/evo-sonic/config"
+	"github.com/evo-lee/evo-sonic/consts"
+	"github.com/evo-lee/evo-sonic/log"
+	"github.com/evo-lee/evo-sonic/model/dto"
+	"github.com/evo-lee/evo-sonic/service"
+	"github.com/evo-lee/evo-sonic/util"
+	"github.com/evo-lee/evo-sonic/util/xerr"
 )
 
 var (

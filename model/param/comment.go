@@ -1,6 +1,6 @@
 package param
 
-import "github.com/go-sonic/sonic/consts"
+import "github.com/evo-lee/evo-sonic/consts"
 
 type CommentQuery struct {
 	Page

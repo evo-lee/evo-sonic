@@ -3,9 +3,9 @@ package aiimpl
 import (
 	"context"
 
-	"github.com/go-sonic/sonic/model/property"
-	"github.com/go-sonic/sonic/service"
-	"github.com/go-sonic/sonic/service/ai"
+	"github.com/evo-lee/evo-sonic/model/property"
+	"github.com/evo-lee/evo-sonic/service"
+	"github.com/evo-lee/evo-sonic/service/ai"
 )
 
 // maxTokensCap is the hard upper limit for any single AI request.

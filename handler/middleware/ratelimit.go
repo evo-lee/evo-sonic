@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/go-sonic/sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/handler/web"
 )
 
 // RateLimiter implements a token bucket rate limiter

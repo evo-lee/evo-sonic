@@ -7,7 +7,7 @@ package entity
 import (
 	"time"
 
-	"github.com/go-sonic/sonic/consts"
+	"github.com/evo-lee/evo-sonic/consts"
 )
 
 const TableNameCategory = "category"

@@ -6,20 +6,20 @@ import (
 
 	"go.uber.org/fx"
 
-	"github.com/go-sonic/sonic/cache"
-	"github.com/go-sonic/sonic/config"
-	"github.com/go-sonic/sonic/dal"
-	"github.com/go-sonic/sonic/event"
-	"github.com/go-sonic/sonic/event/listener"
-	"github.com/go-sonic/sonic/handler"
-	"github.com/go-sonic/sonic/handler/middleware"
-	"github.com/go-sonic/sonic/injection"
-	"github.com/go-sonic/sonic/log"
-	"github.com/go-sonic/sonic/template"
-	"github.com/go-sonic/sonic/template/extension"
+	"github.com/evo-lee/evo-sonic/cache"
+	"github.com/evo-lee/evo-sonic/config"
+	"github.com/evo-lee/evo-sonic/dal"
+	"github.com/evo-lee/evo-sonic/event"
+	"github.com/evo-lee/evo-sonic/event/listener"
+	"github.com/evo-lee/evo-sonic/handler"
+	"github.com/evo-lee/evo-sonic/handler/middleware"
+	"github.com/evo-lee/evo-sonic/injection"
+	"github.com/evo-lee/evo-sonic/log"
+	"github.com/evo-lee/evo-sonic/template"
+	"github.com/evo-lee/evo-sonic/template/extension"
 
-	_ "github.com/go-sonic/sonic/handler/mcp"     // register MCP handler
-	_ "github.com/go-sonic/sonic/service/ai/impl" // register AI services
+	_ "github.com/evo-lee/evo-sonic/handler/mcp"     // register MCP handler
+	_ "github.com/evo-lee/evo-sonic/service/ai/impl" // register AI services
 )
 
 // NewLoginRateLimitMiddleware creates a rate limiter for login endpoints (5 req/min).

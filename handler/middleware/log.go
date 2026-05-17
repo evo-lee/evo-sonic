@@ -6,7 +6,7 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/go-sonic/sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/handler/web"
 )
 
 type LoggerMiddleware struct {

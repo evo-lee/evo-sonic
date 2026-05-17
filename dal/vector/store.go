@@ -9,8 +9,8 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 
-	"github.com/go-sonic/sonic/model/entity"
-	ai "github.com/go-sonic/sonic/service/ai"
+	"github.com/evo-lee/evo-sonic/model/entity"
+	ai "github.com/evo-lee/evo-sonic/service/ai"
 )
 
 // DBStore persists embedding vectors as binary blobs and performs

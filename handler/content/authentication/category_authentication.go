@@ -8,10 +8,10 @@ import (
 
 	"github.com/golang-jwt/jwt/v5"
 
-	"github.com/go-sonic/sonic/model/entity"
-	"github.com/go-sonic/sonic/model/property"
-	"github.com/go-sonic/sonic/service"
-	"github.com/go-sonic/sonic/util/xerr"
+	"github.com/evo-lee/evo-sonic/model/entity"
+	"github.com/evo-lee/evo-sonic/model/property"
+	"github.com/evo-lee/evo-sonic/service"
+	"github.com/evo-lee/evo-sonic/util/xerr"
 )
 
 type CategoryAuthentication struct {

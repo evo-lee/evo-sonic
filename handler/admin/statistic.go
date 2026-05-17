@@ -1,8 +1,8 @@
 package admin
 
 import (
-	"github.com/go-sonic/sonic/handler/web"
-	"github.com/go-sonic/sonic/service"
+	"github.com/evo-lee/evo-sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/service"
 )
 
 type StatisticHandler struct {

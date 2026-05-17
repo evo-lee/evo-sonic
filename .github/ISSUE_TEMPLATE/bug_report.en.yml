@@ -12,7 +12,7 @@ body:
       label: Checklist
       description: To avoid duplicate issues, it is recommended to do the following first.
       options:
-        - label: The issue has been searched in [GitHub Issues](https://github.com/go-sonic/sonic/issues)
+        - label: The issue has been searched in [GitHub Issues](https://github.com/evo-lee/evo-sonic/issues)
           required: true
   - type: markdown
     id: environment
@@ -50,7 +50,7 @@ body:
     attributes:
       label: "Your site address."
       description: "Note your online address, if possible."
-      placeholder: "ex. https://go-sonic.com"
+      placeholder: "ex. https://example.com"
     validations:
       required: false
   - type: markdown

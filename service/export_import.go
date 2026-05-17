@@ -4,7 +4,7 @@ import (
 	"context"
 	"io"
 
-	"github.com/go-sonic/sonic/model/entity"
+	"github.com/evo-lee/evo-sonic/model/entity"
 )
 
 type ExportImport interface {

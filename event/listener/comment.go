@@ -4,13 +4,13 @@ import (
 	"bytes"
 	"context"
 
-	"github.com/go-sonic/sonic/consts"
-	"github.com/go-sonic/sonic/event"
-	"github.com/go-sonic/sonic/model/property"
-	"github.com/go-sonic/sonic/service"
-	"github.com/go-sonic/sonic/service/assembler"
-	"github.com/go-sonic/sonic/template"
-	"github.com/go-sonic/sonic/util"
+	"github.com/evo-lee/evo-sonic/consts"
+	"github.com/evo-lee/evo-sonic/event"
+	"github.com/evo-lee/evo-sonic/model/property"
+	"github.com/evo-lee/evo-sonic/service"
+	"github.com/evo-lee/evo-sonic/service/assembler"
+	"github.com/evo-lee/evo-sonic/template"
+	"github.com/evo-lee/evo-sonic/util"
 )
 
 type CommentListener struct {

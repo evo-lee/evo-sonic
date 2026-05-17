@@ -8,13 +8,13 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/go-sonic/sonic/cache"
-	"github.com/go-sonic/sonic/consts"
-	"github.com/go-sonic/sonic/dal/vector"
-	"github.com/go-sonic/sonic/handler/web"
-	"github.com/go-sonic/sonic/log"
-	"github.com/go-sonic/sonic/service"
-	ai "github.com/go-sonic/sonic/service/ai"
+	"github.com/evo-lee/evo-sonic/cache"
+	"github.com/evo-lee/evo-sonic/consts"
+	"github.com/evo-lee/evo-sonic/dal/vector"
+	"github.com/evo-lee/evo-sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/log"
+	"github.com/evo-lee/evo-sonic/service"
+	ai "github.com/evo-lee/evo-sonic/service/ai"
 	"gorm.io/gorm"
 )
 

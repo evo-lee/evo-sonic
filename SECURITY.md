@@ -2,10 +2,10 @@
 
 ## Supported Versions
 
-We take security seriously at Sonic and are committed to providing support for the latest stable version. You can check the current stable version at https://github.com/go-sonic/sonic/releases/latest.
+We take security seriously at Evo Sonic and provide support for the latest stable version. Check the current release at https://github.com/evo-lee/evo-sonic/releases/latest.
 
-If you come across any security issues in the versions that have not been released yet, we would appreciate it if you could let us know. This way, we can fix the issues before the release.
+If you discover security issues in unreleased versions, please report them so we can fix them before release.
 
 ## Reporting a Vulnerability
 
-If you find a security vulnerability, please report it to us at https://github.com/go-sonic/sonic/security/advisories/new. You can also contact us directly at `jakezhu9@gmail.com`. We appreciate your help in keeping Sonic secure!
+If you find a security vulnerability, report it at https://github.com/evo-lee/evo-sonic/security/advisories/new. We appreciate your help in keeping Evo Sonic secure.

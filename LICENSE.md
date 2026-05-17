@@ -1,6 +1,7 @@
 MIT License
 
-Copyright (c) 2022 go-sonic
+Copyright (c) 2022 go-sonic contributors
+Copyright (c) 2026 evo-sonic contributors
 
 Permission is hereby granted,free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -9,7 +9,7 @@ on:
 
 jobs:
   lint:
-    if: github.repository == 'go-sonic/sonic'
+    if: github.repository == 'evo-lee/evo-sonic'
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go 1.x

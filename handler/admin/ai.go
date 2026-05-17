@@ -9,13 +9,13 @@ import (
 	hertzapp "github.com/cloudwego/hertz/pkg/app"
 	"gorm.io/gorm"
 
-	"github.com/go-sonic/sonic/dal"
-	"github.com/go-sonic/sonic/dal/vector"
-	"github.com/go-sonic/sonic/handler/web"
-	"github.com/go-sonic/sonic/model/property"
-	"github.com/go-sonic/sonic/service"
-	"github.com/go-sonic/sonic/service/ai"
-	"github.com/go-sonic/sonic/util/xerr"
+	"github.com/evo-lee/evo-sonic/dal"
+	"github.com/evo-lee/evo-sonic/dal/vector"
+	"github.com/evo-lee/evo-sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/model/property"
+	"github.com/evo-lee/evo-sonic/service"
+	"github.com/evo-lee/evo-sonic/service/ai"
+	"github.com/evo-lee/evo-sonic/util/xerr"
 )
 
 type AIHandler struct {

@@ -1,6 +1,6 @@
 package vo
 
-import "github.com/go-sonic/sonic/model/dto"
+import "github.com/evo-lee/evo-sonic/model/dto"
 
 type SheetDetail struct {
 	dto.PostDetail

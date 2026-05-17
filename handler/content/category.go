@@ -1,12 +1,12 @@
 package content
 
 import (
-	"github.com/go-sonic/sonic/handler/content/model"
-	"github.com/go-sonic/sonic/handler/web"
-	"github.com/go-sonic/sonic/service"
-	"github.com/go-sonic/sonic/service/assembler"
-	"github.com/go-sonic/sonic/template"
-	"github.com/go-sonic/sonic/util"
+	"github.com/evo-lee/evo-sonic/handler/content/model"
+	"github.com/evo-lee/evo-sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/service"
+	"github.com/evo-lee/evo-sonic/service/assembler"
+	"github.com/evo-lee/evo-sonic/template"
+	"github.com/evo-lee/evo-sonic/util"
 )
 
 type CategoryHandler struct {

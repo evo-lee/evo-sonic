@@ -5,8 +5,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/go-sonic/sonic/injection"
-	ai "github.com/go-sonic/sonic/service/ai"
+	"github.com/evo-lee/evo-sonic/injection"
+	ai "github.com/evo-lee/evo-sonic/service/ai"
 )
 
 func init() {

@@ -3,8 +3,8 @@ package extension
 import (
 	"math/rand"
 
-	"github.com/go-sonic/sonic/template"
-	"github.com/go-sonic/sonic/util"
+	"github.com/evo-lee/evo-sonic/template"
+	"github.com/evo-lee/evo-sonic/util"
 )
 
 type toolExtension struct {

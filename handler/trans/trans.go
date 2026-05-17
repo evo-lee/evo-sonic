@@ -9,7 +9,7 @@ import (
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
 	chTranslations "github.com/go-playground/validator/v10/translations/zh"
-	"github.com/go-sonic/sonic/handler/binding"
+	"github.com/evo-lee/evo-sonic/handler/binding"
 )
 
 var trans ut.Translator

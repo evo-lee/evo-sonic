@@ -5,7 +5,7 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/go-sonic/sonic/log"
+	"github.com/evo-lee/evo-sonic/log"
 )
 
 // AsyncWorkerPool wraps a Bus and dispatches events to listeners

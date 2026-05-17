@@ -1,7 +1,7 @@
 package aiimpl
 
 import (
-	"github.com/go-sonic/sonic/injection"
+	"github.com/evo-lee/evo-sonic/injection"
 )
 
 func init() {

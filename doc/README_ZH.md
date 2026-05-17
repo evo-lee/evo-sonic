@@ -4,7 +4,7 @@
 
 Evo Sonic 是一个基于 [go-sonic/sonic](https://github.com/go-sonic/sonic) fork 后继续演进的 Go 博客系统。项目保留了 Sonic 的轻量、高性能、主题化和多数据库能力，同时对运行时、依赖注入、后台 API、AI 内容能力、健康检查和本地开发体验做了重新整理。
 
-> 当前 Go module 仍保持为 `github.com/go-sonic/sonic`，以兼容原项目包路径和已有代码结构。
+> 当前 Go module 路径为 `github.com/evo-lee/evo-sonic`。
 
 ## 项目定位
 

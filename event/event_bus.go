@@ -7,7 +7,7 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/go-sonic/sonic/log"
+	"github.com/evo-lee/evo-sonic/log"
 )
 
 type Listener func(ctx context.Context, event Event) error

@@ -3,9 +3,9 @@ package assembler
 import (
 	"context"
 
-	"github.com/go-sonic/sonic/model/entity"
-	"github.com/go-sonic/sonic/model/vo"
-	"github.com/go-sonic/sonic/service"
+	"github.com/evo-lee/evo-sonic/model/entity"
+	"github.com/evo-lee/evo-sonic/model/vo"
+	"github.com/evo-lee/evo-sonic/service"
 )
 
 type SheetCommentAssembler interface {

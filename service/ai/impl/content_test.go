@@ -5,7 +5,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/go-sonic/sonic/service/ai"
+	"github.com/evo-lee/evo-sonic/service/ai"
 )
 
 // mockProvider is a test double for ai.Provider.

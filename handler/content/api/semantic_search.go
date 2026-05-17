@@ -3,11 +3,11 @@ package api
 import (
 	"gorm.io/gorm"
 
-	"github.com/go-sonic/sonic/dal/vector"
-	"github.com/go-sonic/sonic/handler/web"
-	"github.com/go-sonic/sonic/service"
-	ai "github.com/go-sonic/sonic/service/ai"
-	"github.com/go-sonic/sonic/util/xerr"
+	"github.com/evo-lee/evo-sonic/dal/vector"
+	"github.com/evo-lee/evo-sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/service"
+	ai "github.com/evo-lee/evo-sonic/service/ai"
+	"github.com/evo-lee/evo-sonic/util/xerr"
 )
 
 type SemanticSearchHandler struct {

@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-sonic/sonic/util/xerr"
+	"github.com/evo-lee/evo-sonic/util/xerr"
 )
 
 type semanticSearchMockCtx struct {

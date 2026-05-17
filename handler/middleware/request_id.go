@@ -3,7 +3,7 @@ package middleware
 import (
 	"github.com/google/uuid"
 
-	"github.com/go-sonic/sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/handler/web"
 )
 
 const (

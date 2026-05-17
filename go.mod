@@ -1,4 +1,4 @@
-module github.com/go-sonic/sonic
+module github.com/evo-lee/evo-sonic
 
 go 1.25.0
 

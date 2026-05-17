@@ -6,13 +6,13 @@ import (
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 
-	"github.com/go-sonic/sonic/consts"
-	"github.com/go-sonic/sonic/dal/vector"
-	"github.com/go-sonic/sonic/event"
-	"github.com/go-sonic/sonic/log"
-	"github.com/go-sonic/sonic/model/property"
-	"github.com/go-sonic/sonic/service"
-	ai "github.com/go-sonic/sonic/service/ai"
+	"github.com/evo-lee/evo-sonic/consts"
+	"github.com/evo-lee/evo-sonic/dal/vector"
+	"github.com/evo-lee/evo-sonic/event"
+	"github.com/evo-lee/evo-sonic/log"
+	"github.com/evo-lee/evo-sonic/model/property"
+	"github.com/evo-lee/evo-sonic/service"
+	ai "github.com/evo-lee/evo-sonic/service/ai"
 )
 
 type EmbeddingListener struct {

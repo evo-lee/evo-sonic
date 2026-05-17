@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/go-sonic/sonic/consts"
-	"github.com/go-sonic/sonic/model/param"
+	"github.com/evo-lee/evo-sonic/consts"
+	"github.com/evo-lee/evo-sonic/model/param"
 )
 
 // ── Resource schema types ────────────────────────────────────────────────────

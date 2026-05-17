@@ -3,7 +3,7 @@ package theme
 import (
 	"context"
 
-	"github.com/go-sonic/sonic/model/dto"
+	"github.com/evo-lee/evo-sonic/model/dto"
 )
 
 type ThemeFetcher interface {

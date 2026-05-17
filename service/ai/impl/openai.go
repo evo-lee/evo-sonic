@@ -7,7 +7,7 @@ import (
 	"github.com/openai/openai-go"
 	"github.com/openai/openai-go/option"
 
-	aiservice "github.com/go-sonic/sonic/service/ai"
+	aiservice "github.com/evo-lee/evo-sonic/service/ai"
 )
 
 const (

@@ -1,6 +1,6 @@
 package content
 
-import "github.com/go-sonic/sonic/injection"
+import "github.com/evo-lee/evo-sonic/injection"
 
 func init() {
 	injection.Provide(

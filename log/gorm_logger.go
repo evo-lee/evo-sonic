@@ -12,7 +12,7 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 
-	"github.com/go-sonic/sonic/config"
+	"github.com/evo-lee/evo-sonic/config"
 )
 
 type gormLogger struct {
@@ -105,7 +105,7 @@ func getCallerSkip() int {
 			return i
 		}
 		frame, _ := runtime.CallersFrames(pc).Next()
-		if !strings.Contains(frame.Function, "gorm.io") && !strings.Contains(frame.Function, "github.com/go-sonic/sonic/dal") {
+		if !strings.Contains(frame.Function, "gorm.io") && !strings.Contains(frame.Function, "github.com/evo-lee/evo-sonic/dal") {
 			return i
 		}
 	}

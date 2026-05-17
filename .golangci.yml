@@ -41,7 +41,7 @@ linters:
 
 linters-settings:
   goimports:
-    local-prefixes: github.com/go-sonic/sonic
+    local-prefixes: github.com/evo-lee/evo-sonic
   revive:
     rules:
       - name: blank-imports

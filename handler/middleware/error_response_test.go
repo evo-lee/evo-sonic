@@ -8,8 +8,8 @@ import (
 
 	hertzapp "github.com/cloudwego/hertz/pkg/app"
 
-	"github.com/go-sonic/sonic/handler/web/hertzadapter"
-	"github.com/go-sonic/sonic/util/xerr"
+	"github.com/evo-lee/evo-sonic/handler/web/hertzadapter"
+	"github.com/evo-lee/evo-sonic/util/xerr"
 )
 
 func TestErrorCodeFromStatus(t *testing.T) {

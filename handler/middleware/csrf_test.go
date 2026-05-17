@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-sonic/sonic/cache"
+	"github.com/evo-lee/evo-sonic/cache"
 )
 
 func TestGenerateCSRFToken(t *testing.T) {

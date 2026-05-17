@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/go-sonic/sonic/cache"
-	"github.com/go-sonic/sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/cache"
+	"github.com/evo-lee/evo-sonic/handler/web"
 )
 
 const (

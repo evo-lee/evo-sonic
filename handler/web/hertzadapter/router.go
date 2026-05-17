@@ -6,7 +6,7 @@ import (
 	hertzapp "github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/route"
 
-	"github.com/go-sonic/sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/handler/web"
 )
 
 type Router struct {

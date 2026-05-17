@@ -4,9 +4,9 @@ import (
 	"context"
 	"mime/multipart"
 
-	"github.com/go-sonic/sonic/consts"
-	"github.com/go-sonic/sonic/model/dto"
-	storageimpl "github.com/go-sonic/sonic/service/storage/impl"
+	"github.com/evo-lee/evo-sonic/consts"
+	"github.com/evo-lee/evo-sonic/model/dto"
+	storageimpl "github.com/evo-lee/evo-sonic/service/storage/impl"
 )
 
 type FileStorage interface {

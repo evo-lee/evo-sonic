@@ -7,7 +7,7 @@ import (
 	"github.com/openai/openai-go"
 	"github.com/openai/openai-go/option"
 
-	ai "github.com/go-sonic/sonic/service/ai"
+	ai "github.com/evo-lee/evo-sonic/service/ai"
 )
 
 const defaultEmbeddingModel = "text-embedding-3-small"

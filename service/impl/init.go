@@ -1,8 +1,8 @@
 package impl
 
 import (
-	"github.com/go-sonic/sonic/injection"
-	"github.com/go-sonic/sonic/service/storage"
+	"github.com/evo-lee/evo-sonic/injection"
+	"github.com/evo-lee/evo-sonic/service/storage"
 )
 
 func init() {

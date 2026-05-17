@@ -20,7 +20,7 @@ router.Use(s.TimeoutMiddleware.Handler(), ...)
 在服务层进行数据库操作时，应该使用 `WithDBTimeout`：
 
 ```go
-import "github.com/go-sonic/sonic/handler/middleware"
+import "github.com/evo-lee/evo-sonic/handler/middleware"
 
 func (s *myServiceImpl) GetUser(ctx context.Context, id int32) (*entity.User, error) {
     // 为数据库操作添加 5 秒超时

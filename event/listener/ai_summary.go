@@ -5,12 +5,12 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/go-sonic/sonic/consts"
-	"github.com/go-sonic/sonic/dal"
-	"github.com/go-sonic/sonic/event"
-	"github.com/go-sonic/sonic/log"
-	"github.com/go-sonic/sonic/service"
-	"github.com/go-sonic/sonic/service/ai"
+	"github.com/evo-lee/evo-sonic/consts"
+	"github.com/evo-lee/evo-sonic/dal"
+	"github.com/evo-lee/evo-sonic/event"
+	"github.com/evo-lee/evo-sonic/log"
+	"github.com/evo-lee/evo-sonic/service"
+	"github.com/evo-lee/evo-sonic/service/ai"
 )
 
 type AISummaryListener struct {

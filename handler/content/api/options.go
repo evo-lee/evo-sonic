@@ -1,9 +1,9 @@
 package api
 
 import (
-	"github.com/go-sonic/sonic/handler/web"
-	"github.com/go-sonic/sonic/model/property"
-	"github.com/go-sonic/sonic/service"
+	"github.com/evo-lee/evo-sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/model/property"
+	"github.com/evo-lee/evo-sonic/service"
 )
 
 type OptionHandler struct {

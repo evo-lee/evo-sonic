@@ -4,7 +4,7 @@ English | [中文](doc/README_ZH.md)
 
 Evo Sonic is a Go blogging platform forked from [go-sonic/sonic](https://github.com/go-sonic/sonic) and evolved independently. It keeps Sonic's lightweight, high-performance, themeable, multi-database foundation while reorganizing the runtime, dependency injection, admin API, AI content features, health checks, and local development workflow.
 
-> The Go module path is still `github.com/go-sonic/sonic` to preserve compatibility with the original package layout and existing imports.
+> The Go module path is `github.com/evo-lee/evo-sonic`.
 
 ## Positioning
 

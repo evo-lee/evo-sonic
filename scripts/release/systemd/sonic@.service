@@ -1,6 +1,6 @@
 [Unit]
-Description=Go-Sonic Service
-Documentation=https://github.com/go-sonic/sonic
+Description=Evo Sonic Service
+Documentation=https://github.com/evo-lee/evo-sonic
 After=network.target nss-lookup.target
 
 [Service]

@@ -12,7 +12,7 @@ import (
 	"github.com/cloudwego/hertz/pkg/common/adaptor"
 	"github.com/cloudwego/hertz/pkg/protocol"
 
-	"github.com/go-sonic/sonic/handler/web"
+	"github.com/evo-lee/evo-sonic/handler/web"
 )
 
 const (

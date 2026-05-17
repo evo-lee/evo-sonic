@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/go-sonic/sonic/service/ai"
+	"github.com/evo-lee/evo-sonic/service/ai"
 )
 
 const (

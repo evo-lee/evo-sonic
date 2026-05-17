@@ -13,7 +13,7 @@ body:
       label: 检查清单
       description: 为了保证同样的问题不被重复创建，建议先进行下面的操作。
       options:
-        - label: 已经在 [GitHub Issues](https://github.com/go-sonic/sonic/issues) 中搜索过该问题
+        - label: 已经在 [GitHub Issues](https://github.com/evo-lee/evo-sonic/issues) 中搜索过该问题
           required: true
   - type: markdown
     id: environment
@@ -51,7 +51,7 @@ body:
     attributes:
       label: "在线站点地址"
       description: "如果可以的话，请提供你的站点地址。这可能会帮助我们更好的定位问题。"
-      placeholder: "ex. https://go-sonic.com"
+      placeholder: "ex. https://example.com"
     validations:
       required: false
   - type: markdown

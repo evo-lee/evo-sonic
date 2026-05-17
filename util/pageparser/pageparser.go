@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-sonic/sonic/util/pageparser/metadecoders"
+	"github.com/evo-lee/evo-sonic/util/pageparser/metadecoders"
 )
 
 // Result holds the parse result.

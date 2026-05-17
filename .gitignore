@@ -15,3 +15,7 @@ __debug_bin
 
 # docs-guardian generated artifacts
 .claude/docs-guardian/audit-report.md
+
+# Test artifacts
+coverage.out
+coverage.html

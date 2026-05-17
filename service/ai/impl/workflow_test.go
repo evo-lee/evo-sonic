@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	ai "github.com/go-sonic/sonic/service/ai"
+	ai "github.com/evo-lee/evo-sonic/service/ai"
 )
 
 func svc() ai.WorkflowService { return NewWorkflowService() }

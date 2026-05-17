@@ -9,9 +9,9 @@ import (
 	"github.com/go-git/go-git/v5"
 	"go.uber.org/fx"
 
-	"github.com/go-sonic/sonic/model/dto"
-	"github.com/go-sonic/sonic/util"
-	"github.com/go-sonic/sonic/util/xerr"
+	"github.com/evo-lee/evo-sonic/model/dto"
+	"github.com/evo-lee/evo-sonic/util"
+	"github.com/evo-lee/evo-sonic/util/xerr"
 )
 
 type gitThemeFetcherImpl struct {
